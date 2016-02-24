@@ -15,9 +15,13 @@ class ViewController: UIViewController {
     
     
     @IBOutlet weak var funFactLabel: UILabel!
+    @IBOutlet weak var funFactButton: UIButton!
+    let factModel = FactModel()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        funFactLabel.text = "An interesting fact!"
+        funFactLabel.text = factModel.facts[0]
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -27,7 +31,10 @@ class ViewController: UIViewController {
     }
  
     @IBAction func showFunFact() {
-        funFactLabel.text = "Another interesting fact."
+        let randomColor = ColorModel().getRandomColor()
+        funFactButton.tintColor = randomColor
+        view.backgroundColor = randomColor
+        funFactLabel.text = factModel.getRandomFact()
     }
 }
 
